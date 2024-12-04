@@ -25,3 +25,4 @@ dist-ssr
 
 # Лишние папки
 sourcedata/featuredata
+sourcedata/mylayers/archive

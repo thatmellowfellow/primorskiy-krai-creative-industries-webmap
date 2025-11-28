@@ -215,6 +215,14 @@ for (let lyrId in cfg.layers) {
             });
         },
         pane: lyrId,
+        // filter: (feature, layer) => {
+        //     if (!cfg.layers[lyrId].filter) return true;
+        //     return (
+        //         feature.properties[Object.keys(cfg.layers[lyrId].filter)[0]] ==
+        //         Object.values(cfg.layers[lyrId].filter)[0]
+        //     );
+        // },
+        // mapconfig.json: "filter": { "Вид собственности": "Частная" }
     });
     geoData[lyrId].on('data:loaded', () => {
         if (cfg.layers[lyrId].markersCluster) {

@@ -13,7 +13,7 @@
     "basemaps": { "Карта": "CartoDB.Positron", "Спутник": "Esri.WorldImagery" },
     "layers": [
         {
-            "name": "Юридические лица",
+            "name": "Юридические лица в государственной собственности",
             "source": "ul.geojson",
             "group": "Экономические субъекты",
             "groupHeader": false,
@@ -22,7 +22,21 @@
             "infobox": true,
             "markersCluster": true,
             "tooltip": true,
-            "zIndex": 410
+            "zIndex": 410,
+            "filter": { "Вид собственности": "Государственная" }
+        },
+        {
+            "name": "Юридические лица в частной собственности",
+            "source": "ul.geojson",
+            "group": "Экономические субъекты",
+            "groupHeader": false,
+            "style": "ul",
+            "onByDef": true,
+            "infobox": true,
+            "markersCluster": true,
+            "tooltip": true,
+            "zIndex": 410,
+            "filter": { "Вид собственности": "Частная" }
         },
         {
             "name": "Индивидуальные предприниматели",

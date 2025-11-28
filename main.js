@@ -1,23 +1,23 @@
 // Импортируем библиотеки
-import "leaflet.markercluster";
-import "leaflet.markercluster/dist/MarkerCluster.css";
-import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+import 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 //Импортируем функции из модулей
-import { styleFeatures } from "./js/modules/styleFeatures.js";
-import { getData } from "./js/modules/getData.js";
-import { modifyLayersPanel } from "./js/modules/modifyLayersPanel.js";
-import mapLegend from "./js/modules/mapLegend.js";
-import onClassChange from "./js/modules/classChangeObserver.js";
+import { styleFeatures } from './js/modules/styleFeatures.js';
+import { getData } from './js/modules/getData.js';
+import { modifyLayersPanel } from './js/modules/modifyLayersPanel.js';
+import mapLegend from './js/modules/mapLegend.js';
+import onClassChange from './js/modules/classChangeObserver.js';
 
 //Наведение, клик, деклик на выбранный объект
 function highlight(layer) {
     let geomType = layer.feature.geometry.type.toLowerCase();
     //Если полигональный объект
-    if (~geomType.indexOf("polygon")) {
+    if (~geomType.indexOf('polygon')) {
         layer.setStyle({
             weight: 4,
         });
-    } else if (~geomType.indexOf("point")) {
+    } else if (~geomType.indexOf('point')) {
         layer.setStyle({
             radius: 8,
         });
@@ -32,11 +32,11 @@ function dehighlight(layer, lyrId) {
         //geoData[lyrId].resetStyle(layer);
         let geomType = layer.feature.geometry.type.toLowerCase();
         //Если полигональный объект
-        if (~geomType.indexOf("polygon")) {
+        if (~geomType.indexOf('polygon')) {
             layer.setStyle({
                 weight: 2,
             });
-        } else if (~geomType.indexOf("point")) {
+        } else if (~geomType.indexOf('point')) {
             layer.setStyle({
                 radius: 6,
             });
@@ -61,7 +61,7 @@ function select(layer, lyrId) {
 let selected = null;
 
 // Загружаем файл конфигурации карты. Переменную делаем глобальной, чтобы она была видна во всех модулях
-window.cfg = getData("js/cfg/mapconfig.json");
+window.cfg = getData('js/cfg/mapconfig.json');
 
 //Название сайта
 document.title = cfg.website_title;
@@ -74,7 +74,7 @@ for (const [alias, name] of Object.entries(cfg.basemaps)) {
 
 // Создаём карту, ставим начальное положение и масштаб, мин. и макс. масштаб, охват; загружаем подложки
 // Подложка по умолчанию - первая в списке в файле конфига
-let map = L.map("mapid", {
+let map = L.map('mapid', {
     layers: [basemaps[Object.keys(basemaps)[0]]],
     maxBounds: L.latLngBounds(cfg.extent[0], cfg.extent[1]),
     minZoom: cfg.minZoom,
@@ -86,7 +86,7 @@ let map = L.map("mapid", {
 //Кнопки масштаба
 L.control
     .zoom({
-        position: "topright",
+        position: 'topright',
     })
     .addTo(map);
 
@@ -98,7 +98,7 @@ L.Control.goHome = L.Control.extend({
 let layerControl = L.control
     .layers(basemaps, null, {
         collapsed: false,
-        position: "topleft",
+        position: 'topleft',
         sortLayers: true,
         sortFunction: (layerA, _, nameA, nameB) => {
             // Если это слой, а не подложка
@@ -116,13 +116,13 @@ let layerControl = L.control
 //Масштабная линейка
 L.control.scale({ maxWidth: 200, imperial: false }).addTo(map);
 //Делаем единицы измерения в масштабной линейке на русском
-let scale = document.getElementsByClassName("leaflet-control-scale-line")[0];
-scale.textContent = scale.textContent.replace("km", "км").replace("m", "м");
-["load", "move", "zoomend"].forEach((event) => {
+let scale = document.getElementsByClassName('leaflet-control-scale-line')[0];
+scale.textContent = scale.textContent.replace('km', 'км').replace('m', 'м');
+['load', 'move', 'zoomend'].forEach((event) => {
     map.on(event, (e) => {
         scale.textContent = scale.textContent
-            .replace("km", "км")
-            .replace("m", "м");
+            .replace('km', 'км')
+            .replace('m', 'м');
     });
 });
 
@@ -135,7 +135,7 @@ for (let lyrId in cfg.layers) {
     if (cfg.layers[lyrId].zIndex) {
         map.getPane(lyrId).style.zIndex = cfg.layers[lyrId].zIndex;
     }
-    let pathToLyr = "sourcedata/mylayers/" + cfg.layers[lyrId].source;
+    let pathToLyr = 'sourcedata/mylayers/' + cfg.layers[lyrId].source;
     // Если нужны кластеры маркеров, то инициализируем
     if (cfg.layers[lyrId].markersCluster) {
         markersClusters[lyrId] = L.markerClusterGroup({
@@ -175,8 +175,8 @@ for (let lyrId in cfg.layers) {
             // Надпись МО
             if (cfg.layers[lyrId].label) {
                 layer.bindTooltip(feature.properties.name, {
-                    direction: "center",
-                    className: "bounds-tooltip",
+                    direction: 'center',
+                    className: 'bounds-tooltip',
                 });
             }
             // Инфа о лице
@@ -186,21 +186,21 @@ for (let lyrId in cfg.layers) {
                     <tbody>
                         <tr>
                             <th scope="row">Наименование</th>
-                            <td>${feature.properties["Наименование"]}</td>
+                            <td>${feature.properties['Наименование']}</td>
                         </tr>
                         <tr>
                             <th scope="row">ОКВЭД</th>
-                            <td>${feature.properties["Категория"]} ${feature.properties["Название категории"]}</td>
+                            <td>${feature.properties['ОКВЭД']} ${feature.properties['Название категории']}</td>
                         </tr>
                         <tr>
                             <th scope="row">ИНН</th>
-                            <td>${feature.properties["ИНН"]}</td>
+                            <td>${feature.properties['ИНН']}</td>
                         </tr>
                     </tbody>
                     </table>`;
                 layer.bindPopup(toolTipContent, {
                     // interactive: true,
-                    className: "entity-tooltip",
+                    className: 'entity-tooltip',
                 });
             }
             layer.on({
@@ -216,7 +216,7 @@ for (let lyrId in cfg.layers) {
         },
         pane: lyrId,
     });
-    geoData[lyrId].on("data:loaded", () => {
+    geoData[lyrId].on('data:loaded', () => {
         if (cfg.layers[lyrId].markersCluster) {
             markersClusters[lyrId].addLayer(geoData[lyrId]);
             // Если имеем кластеры маркеров, добавляем их
@@ -241,23 +241,23 @@ for (let lyrId in cfg.layers) {
     });
 }
 // Легенда
-let legend = L.control({ position: "bottomright" });
+let legend = L.control({ position: 'bottomright' });
 legend.onAdd = (map) => mapLegend(map);
 legend.addTo(map);
 
 //Всплывающее окно
-document.getElementById("v-infobox-closebutton").onclick = () => {
+document.getElementById('v-infobox-closebutton').onclick = () => {
     document
-        .getElementsByClassName("v-infobox")[0]
-        .classList.remove("v-infobox-open");
+        .getElementsByClassName('v-infobox')[0]
+        .classList.remove('v-infobox-open');
 };
 
 // Сохранение статуса легенды в localstorage
-const legendContainer = document.querySelector(".legend-container");
+const legendContainer = document.querySelector('.legend-container');
 
 onClassChange(legendContainer, (_) => {
     localStorage.setItem(
-        "isLegendOpen",
-        legendContainer.classList.contains("show") ? 1 : 0
+        'isLegendOpen',
+        legendContainer.classList.contains('show') ? 1 : 0
     );
 });

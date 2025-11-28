@@ -1,14 +1,14 @@
 {
-    "website_title": "Креативные индустрии Красноярского края",
-    "city": "Красноярск",
-    "city_en": "Krasnoyarsk",
-    "center": [67, 93],
-    "zoom": 4,
-    "minZoom": 3.5,
+    "website_title": "Креативные индустрии Приморского края",
+    "city": "Приморский край",
+    "city_en": "Primorskiy krai",
+    "center": [45, 135],
+    "zoom": 7,
+    "minZoom": 6,
     "maxZoom": 19,
     "extent": [
-        [40, 40],
-        [90, 140]
+        [50, 120],
+        [40, 150]
     ],
     "basemaps": { "Карта": "CartoDB.Positron", "Спутник": "Esri.WorldImagery" },
     "layers": [

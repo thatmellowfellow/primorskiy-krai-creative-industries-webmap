@@ -1,9 +1,9 @@
 {
-    "name": "krasnoyarsk-creative-industries-map",
+    "name": "primorskiy-krai-creative-industries-map",
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://thatmellowfellow.github.io/krasnoyarsk-creative-industries-webmap",
+    "homepage": "https://thatmellowfellow.github.io/primorskiy-krai-creative-industries-map",
     "scripts": {
         "dev": "vite",
         "build": "vite build",

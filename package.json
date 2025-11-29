@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://thatmellowfellow.github.io/primorskiy-krai-creative-industries-map",
+    "homepage": "https://thatmellowfellow.github.io/primorskiy-krai-creative-industries-webmap",
     "scripts": {
         "dev": "vite",
         "build": "vite build",

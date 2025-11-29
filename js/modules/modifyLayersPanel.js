@@ -19,7 +19,8 @@ export function modifyLayersPanel() {
 
     //Делаем подписи
     let layersPanelHeaderHTML =
-        "<div class='leaflet-control-layers-header-container'><img src='./sourcedata/logos/coa.png' class='leaflet-control-layers-header-icon'/><h4 class='leaflet-control-layers-header'>Креативные индустрии<br/>Приморского края</h4><button type='button' aria-label='Закрыть' id='layers-panel-close-button' class='leaflet-control-layers-header-closebutton leaflet-control-layers-header-closebutton-flipped btn btn-light btn-sm'><i class=\"fa-solid fa-xmark\"></button></div>";
+        /*html*/
+        `<div class='leaflet-control-layers-header-container'><img src='./sourcedata/logos/coa.png' class='leaflet-control-layers-header-icon'/><h4 class='leaflet-control-layers-header'>Креативные индустрии<br/>Приморского края</h4><button type='button' aria-label='Закрыть' id='layers-panel-close-button' class='leaflet-control-layers-header-closebutton leaflet-control-layers-header-closebutton-flipped btn btn-light btn-sm'><i class=\"fa-solid fa-xmark\"></button></div>`;
     basemapsGroup.insertAdjacentHTML(
         'afterbegin',
         '<h6>Картографическая основа</h6>'
